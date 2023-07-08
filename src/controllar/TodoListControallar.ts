@@ -73,14 +73,15 @@ TodoListControallar.UpdateStatusTodo = (req: Request, res: Response)=>{
 TodoListControallar.RemoveTodo = (req: Request, res: Response)=>{
     let _id = req.body['_id'];
 
-    TodoListModel.remove({ _id: _id }, (err:any, data:any) => {
+    TodoListModel.deleteOne({ _id: _id }, (err: any, result: any) => {
         if (err) {
             res.status(400).json({status: "fail", data: err})
         } else {
-            res.status(200).json({status: "Success", data: data})
+            res.status(200).json({status: "Success", data: result})
         }
     })
 }
+
 
 TodoListControallar.SelectTodoByStatus = (req :Request, res :Response)=>{
 
